@@ -17,7 +17,7 @@ import com.o3dr.services.android.lib.drone.property.Type;
 import org.beyene.sius.unit.length.LengthUnit;
 import org.droidplanner.android.R;
 import org.droidplanner.android.fragments.FlightDataFragment;
-import org.droidplanner.android.fragments.FlightMapFragment;
+//import org.droidplanner.android.fragments.FlightMapFragment;
 import org.droidplanner.android.fragments.helpers.ApiListenerFragment;
 import org.droidplanner.android.utils.prefs.DroidPlannerPrefs;
 import org.droidplanner.android.utils.unit.providers.length.LengthUnitProvider;
@@ -25,7 +25,7 @@ import org.droidplanner.android.view.spinnerWheel.CardWheelHorizontalView;
 import org.droidplanner.android.view.spinnerWheel.adapters.LengthWheelAdapter;
 
 public class ModeGuidedFragment extends ApiListenerFragment implements
-        CardWheelHorizontalView.OnCardWheelScrollListener<LengthUnit>, FlightMapFragment.OnGuidedClickListener {
+        CardWheelHorizontalView.OnCardWheelScrollListener<LengthUnit> { //, FlightMapFragment.OnGuidedClickListener {
 
     private CardWheelHorizontalView<LengthUnit> mAltitudeWheel;
     protected FlightDataFragment parent;
@@ -118,7 +118,7 @@ public class ModeGuidedFragment extends ApiListenerFragment implements
             mAltitudeWheel.setCurrentValue(initialValue);
         }
 
-        parent.setGuidedClickListener(this);
+//        parent.setGuidedClickListener(this);
         Type droneType = drone.getAttribute(AttributeType.TYPE);
         if (droneType.getDroneType() == Type.TYPE_ROVER) {
             mAltitudeWheel.setVisibility(View.GONE);
@@ -129,13 +129,13 @@ public class ModeGuidedFragment extends ApiListenerFragment implements
 
     @Override
     public void onApiDisconnected() {
-        parent.setGuidedClickListener(null);
+//        parent.setGuidedClickListener(null);
     }
 
-    @Override
-    public void onGuidedClick(LatLong coord) {
-        final Drone drone = getDrone();
-        if (drone != null)
-            drone.sendGuidedPoint(coord, false);
-    }
+//    @Override
+//    public void onGuidedClick(LatLong coord) {
+//        final Drone drone = getDrone();
+//        if (drone != null)
+//            drone.sendGuidedPoint(coord, false);
+//    }
 }

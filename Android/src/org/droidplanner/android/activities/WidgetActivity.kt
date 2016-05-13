@@ -24,7 +24,7 @@ import com.o3dr.services.android.lib.drone.companion.solo.tlv.SoloGoproState
 import org.droidplanner.android.R
 import org.droidplanner.android.activities.helpers.SuperUI
 import org.droidplanner.android.fragments.FlightDataFragment
-import org.droidplanner.android.fragments.FlightMapFragment
+//import org.droidplanner.android.fragments.FlightMapFragment
 import org.droidplanner.android.fragments.actionbar.ActionBarTelemFragment
 import org.droidplanner.android.fragments.widget.TowerWidget
 import org.droidplanner.android.fragments.widget.TowerWidgets
@@ -45,12 +45,12 @@ public class WidgetActivity : SuperUI() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_widget)
 
-        val fm = supportFragmentManager
-        var flightDataFragment = fm.findFragmentById(R.id.map_view) as FlightDataFragment?
-        if(flightDataFragment == null){
-            flightDataFragment = FlightDataFragment()
-            fm.beginTransaction().add(R.id.map_view, flightDataFragment).commit()
-        }
+//        val fm = supportFragmentManager
+//        var flightDataFragment = fm.findFragmentById(R.id.map_view) as FlightDataFragment?
+//        if(flightDataFragment == null){
+//            flightDataFragment = FlightDataFragment()
+//            fm.beginTransaction().add(R.id.map_view, flightDataFragment).commit()
+//        }
 
         handleIntent(intent)
     }

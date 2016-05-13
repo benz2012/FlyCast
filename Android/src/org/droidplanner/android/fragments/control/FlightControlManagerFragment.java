@@ -151,7 +151,7 @@ public class FlightControlManagerFragment extends ApiListenerFragment {
 	public void updateMapBearing(float bearing) {
 		final FlightDataFragment parent = (FlightDataFragment) getParentFragment();
 		if (parent != null) {
-			parent.updateMapBearing(bearing);
+//			parent.updateMapBearing(bearing);
 		}
 	}
 }

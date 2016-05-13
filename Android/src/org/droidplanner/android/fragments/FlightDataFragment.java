@@ -101,11 +101,11 @@ public class FlightDataFragment extends ApiListenerFragment implements SlidingDr
                     }
                     break;
 
-                case AttributeEvent.MISSION_DRONIE_CREATED:
-                    float dronieBearing = intent.getFloatExtra(AttributeEventExtra.EXTRA_MISSION_DRONIE_BEARING, -1);
-                    if (dronieBearing != -1)
-                        updateMapBearing(dronieBearing);
-                    break;
+//                case AttributeEvent.MISSION_DRONIE_CREATED:
+//                    float dronieBearing = intent.getFloatExtra(AttributeEventExtra.EXTRA_MISSION_DRONIE_BEARING, -1);
+//                    if (dronieBearing != -1)
+//                        updateMapBearing(dronieBearing);
+//                    break;
 
 
             }
@@ -159,7 +159,7 @@ public class FlightDataFragment extends ApiListenerFragment implements SlidingDr
     private View actionbarShadow;
     private TextView warningView;
 
-    private FlightMapFragment mapFragment;
+//    private FlightMapFragment mapFragment;
     private FlightControlManagerFragment flightActions;
 
     private SlidingUpPanelLayout mSlidingPanel;
@@ -261,7 +261,7 @@ public class FlightDataFragment extends ApiListenerFragment implements SlidingDr
         mSlidingPanel.setPanelSlideListener(slidingPanelListenerMgr);
         warningView = (TextView) view.findViewById(R.id.failsafeTextView);
 
-        setupMapFragment();
+//        setupMapFragment();
 
 //        mGoToMyLocation = (FloatingActionButton) view.findViewById(R.id.my_location_button);
 //        mGoToDroneLocation = (FloatingActionButton) view.findViewById(R.id.drone_location_button);
@@ -364,8 +364,8 @@ public class FlightDataFragment extends ApiListenerFragment implements SlidingDr
     @Override
     public void onStart() {
         super.onStart();
-        setupMapFragment();
-        updateMapLocationButtons(getAppPrefs().getAutoPanMode());
+//        setupMapFragment();
+//        updateMapLocationButtons(getAppPrefs().getAutoPanMode());
     }
 
     @Override
@@ -397,42 +397,42 @@ public class FlightDataFragment extends ApiListenerFragment implements SlidingDr
      * initialize the map fragment, this checks if the Google Play Services
      * binary is installed and up to date.
      */
-    private void setupMapFragment() {
-        final FragmentManager fm = getChildFragmentManager();
-        if (mapFragment == null && isGooglePlayServicesValid(true)) {
-            mapFragment = (FlightMapFragment) fm.findFragmentById(R.id.flight_map_fragment);
-            if (mapFragment == null) {
-                mapFragment = new FlightMapFragment();
-                fm.beginTransaction().add(R.id.flight_map_fragment, mapFragment).commit();
-            }
-        }
-    }
+//    private void setupMapFragment() {
+//        final FragmentManager fm = getChildFragmentManager();
+//        if (mapFragment == null && isGooglePlayServicesValid(true)) {
+//            mapFragment = (FlightMapFragment) fm.findFragmentById(R.id.flight_map_fragment);
+//            if (mapFragment == null) {
+//                mapFragment = new FlightMapFragment();
+//                fm.beginTransaction().add(R.id.flight_map_fragment, mapFragment).commit();
+//            }
+//        }
+//    }
 
-    private void updateMapLocationButtons(AutoPanMode mode) {
-        //mGoToMyLocation.setActivated(false);
-        //mGoToDroneLocation.setActivated(false);
+//    private void updateMapLocationButtons(AutoPanMode mode) {
+//        //mGoToMyLocation.setActivated(false);
+//        //mGoToDroneLocation.setActivated(false);
+//
+//        if (mapFragment != null) {
+//            mapFragment.setAutoPanMode(mode);
+//        }
+//
+//        switch (mode) {
+//            case DRONE:
+//                //mGoToDroneLocation.setActivated(true);
+//                break;
+//
+//            case USER:
+//                //mGoToMyLocation.setActivated(true);
+//                break;
+//            default:
+//                break;
+//        }
+//    }
 
-        if (mapFragment != null) {
-            mapFragment.setAutoPanMode(mode);
-        }
-
-        switch (mode) {
-            case DRONE:
-                //mGoToDroneLocation.setActivated(true);
-                break;
-
-            case USER:
-                //mGoToMyLocation.setActivated(true);
-                break;
-            default:
-                break;
-        }
-    }
-
-    public void updateMapBearing(float bearing) {
-        if (mapFragment != null)
-            mapFragment.updateMapBearing(bearing);
-    }
+//    public void updateMapBearing(float bearing) {
+//        if (mapFragment != null)
+//            mapFragment.updateMapBearing(bearing);
+//    }
 
     private void enableSlidingUpPanel(Drone api) {
         if (mSlidingPanel == null || api == null) {
@@ -539,15 +539,15 @@ public class FlightDataFragment extends ApiListenerFragment implements SlidingDr
         return isValid;
     }
 
-    public void setGuidedClickListener(FlightMapFragment.OnGuidedClickListener listener) {
-        mapFragment.setGuidedClickListener(listener);
-    }
-
-    public void addMapMarkerProvider(DroneMap.MapMarkerProvider provider) {
-        mapFragment.addMapMarkerProvider(provider);
-    }
-
-    public void removeMapMarkerProvider(DroneMap.MapMarkerProvider provider) {
-        mapFragment.removeMapMarkerProvider(provider);
-    }
+//    public void setGuidedClickListener(FlightMapFragment.OnGuidedClickListener listener) {
+//        mapFragment.setGuidedClickListener(listener);
+//    }
+//
+//    public void addMapMarkerProvider(DroneMap.MapMarkerProvider provider) {
+//        mapFragment.addMapMarkerProvider(provider);
+//    }
+//
+//    public void removeMapMarkerProvider(DroneMap.MapMarkerProvider provider) {
+//        mapFragment.removeMapMarkerProvider(provider);
+//    }
 }

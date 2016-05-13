@@ -26,16 +26,16 @@ import com.o3dr.services.android.lib.gcs.follow.FollowType;
 
 import org.beyene.sius.unit.length.LengthUnit;
 import org.droidplanner.android.R;
-import org.droidplanner.android.fragments.DroneMap;
-import org.droidplanner.android.graphic.map.GuidedScanROIMarkerInfo;
-import org.droidplanner.android.maps.MarkerInfo;
+//import org.droidplanner.android.fragments.DroneMap;
+//import org.droidplanner.android.graphic.map.GuidedScanROIMarkerInfo;
+//import org.droidplanner.android.maps.MarkerInfo;
 import org.droidplanner.android.utils.Utils;
 import org.droidplanner.android.utils.prefs.DroidPlannerPrefs;
 import org.droidplanner.android.utils.unit.providers.length.LengthUnitProvider;
 import org.droidplanner.android.view.spinnerWheel.CardWheelHorizontalView;
 import org.droidplanner.android.view.spinnerWheel.adapters.LengthWheelAdapter;
 
-public class ModeFollowFragment extends ModeGuidedFragment implements OnItemSelectedListener, DroneMap.MapMarkerProvider {
+public class ModeFollowFragment extends ModeGuidedFragment { // implements OnItemSelectedListener{ //, DroneMap.MapMarkerProvider {
 
     private static final double DEFAULT_MIN_RADIUS = 2; //meters
 
@@ -58,14 +58,14 @@ public class ModeFollowFragment extends ModeGuidedFragment implements OnItemSele
         }
     };
 
-    private final GuidedScanROIMarkerInfo roiMarkerInfo = new GuidedScanROIMarkerInfo();
+//    private final GuidedScanROIMarkerInfo roiMarkerInfo = new GuidedScanROIMarkerInfo();
 
-    private final MarkerInfo[] emptyMarkers = {};
-    private final MarkerInfo[] markers = new MarkerInfo[1];
+//    private final MarkerInfo[] emptyMarkers = {};
+//    private final MarkerInfo[] markers = new MarkerInfo[1];
 
-    {
-        markers[ROI_TARGET_MARKER_INDEX] = roiMarkerInfo;
-    }
+//    {
+//        markers[ROI_TARGET_MARKER_INDEX] = roiMarkerInfo;
+//    }
 
     private TextView modeDescription;
     private Spinner spinner;
@@ -107,7 +107,7 @@ public class ModeFollowFragment extends ModeGuidedFragment implements OnItemSele
         spinner = (Spinner) parentView.findViewById(R.id.follow_type_spinner);
         adapter = new FollowTypesAdapter(context, false);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+        //spinner.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -130,7 +130,7 @@ public class ModeFollowFragment extends ModeGuidedFragment implements OnItemSele
             onFollowTypeUpdate(followType, followState.getParams());
         }
 
-        parent.addMapMarkerProvider(this);
+//        parent.addMapMarkerProvider(this);
         getBroadcastManager().registerReceiver(eventReceiver, eventFilter);
     }
 
@@ -152,22 +152,22 @@ public class ModeFollowFragment extends ModeGuidedFragment implements OnItemSele
             mRadiusWheel.setVisibility(View.GONE);
         }
 
-        double roiHeight = GuidedScanROIMarkerInfo.DEFAULT_FOLLOW_ROI_ALTITUDE;
-        LatLong roiTarget = null;
-        if (followType.hasParam(FollowType.EXTRA_FOLLOW_ROI_TARGET)) {
-            roiTarget = roiMarkerInfo.getPosition();
+//        double roiHeight = GuidedScanROIMarkerInfo.DEFAULT_FOLLOW_ROI_ALTITUDE;
+//        LatLong roiTarget = null;
+//        if (followType.hasParam(FollowType.EXTRA_FOLLOW_ROI_TARGET)) {
+//            roiTarget = roiMarkerInfo.getPosition();
+//
+//            if (params != null) {
+//                params.setClassLoader(LatLong.class.getClassLoader());
+//                roiTarget = params.getParcelable(FollowType.EXTRA_FOLLOW_ROI_TARGET);
+//            }
+//
+//            if (roiTarget instanceof LatLongAlt)
+//                roiHeight = ((LatLongAlt) roiTarget).getAltitude();
+//        }
 
-            if (params != null) {
-                params.setClassLoader(LatLong.class.getClassLoader());
-                roiTarget = params.getParcelable(FollowType.EXTRA_FOLLOW_ROI_TARGET);
-            }
-
-            if (roiTarget instanceof LatLongAlt)
-                roiHeight = ((LatLongAlt) roiTarget).getAltitude();
-        }
-
-        roiHeightWheel.setCurrentValue(getLengthUnitProvider().boxBaseValueToTarget(roiHeight));
-        updateROITargetMarker(roiTarget);
+//        roiHeightWheel.setCurrentValue(getLengthUnitProvider().boxBaseValueToTarget(roiHeight));
+//        updateROITargetMarker(roiTarget);
     }
 
     private void updateModeDescription(FollowType followType) {
@@ -188,7 +188,7 @@ public class ModeFollowFragment extends ModeGuidedFragment implements OnItemSele
     @Override
     public void onApiDisconnected() {
         super.onApiDisconnected();
-        parent.removeMapMarkerProvider(this);
+//        parent.removeMapMarkerProvider(this);
         getBroadcastManager().unregisterReceiver(eventReceiver);
     }
 
@@ -206,11 +206,11 @@ public class ModeFollowFragment extends ModeGuidedFragment implements OnItemSele
 
             case R.id.roi_height_spinner:
                 if (drone.isConnected()) {
-                    final LatLongAlt roiCoord = roiMarkerInfo.getPosition();
-                    if (roiCoord != null) {
-                        roiCoord.setAltitude(newValue.toBase().getValue());
-                        pushROITargetToVehicle(drone, roiCoord);
-                    }
+//                    final LatLongAlt roiCoord = roiMarkerInfo.getPosition();
+//                    if (roiCoord != null) {
+//                        roiCoord.setAltitude(newValue.toBase().getValue());
+//                        pushROITargetToVehicle(drone, roiCoord);
+//                    }
                 }
                 break;
 
@@ -220,36 +220,36 @@ public class ModeFollowFragment extends ModeGuidedFragment implements OnItemSele
         }
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        final FollowType type = adapter.getItem(position);
+//    @Override
+//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//        final FollowType type = adapter.getItem(position);
+//
+//        final Drone drone = getDrone();
+//        if (drone.isConnected()) {
+//            drone.enableFollowMe(type);
+//        }
+//    }
 
-        final Drone drone = getDrone();
-        if (drone.isConnected()) {
-            drone.enableFollowMe(type);
-        }
-    }
+//    @Override
+//    public void onNothingSelected(AdapterView<?> arg0) {
+//    }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> arg0) {
-    }
-
-    @Override
-    public void onGuidedClick(LatLong coord) {
-        final Drone drone = getDrone();
-        final FollowState followState = drone.getAttribute(AttributeType.FOLLOW_STATE);
-        if (followState != null && followState.isEnabled() && followState.getMode().hasParam(FollowType.EXTRA_FOLLOW_ROI_TARGET)) {
-            Toast.makeText(getContext(), R.string.guided_scan_roi_set_message, Toast.LENGTH_LONG).show();
-
-            final double roiHeight = roiHeightWheel.getCurrentValue().toBase().getValue();
-            final LatLongAlt roiCoord = new LatLongAlt(coord.getLatitude(), coord.getLongitude(), roiHeight);
-
-            pushROITargetToVehicle(drone, roiCoord);
-            updateROITargetMarker(coord);
-        } else {
-            super.onGuidedClick(coord);
-        }
-    }
+//    @Override
+//    public void onGuidedClick(LatLong coord) {
+//        final Drone drone = getDrone();
+//        final FollowState followState = drone.getAttribute(AttributeType.FOLLOW_STATE);
+//        if (followState != null && followState.isEnabled() && followState.getMode().hasParam(FollowType.EXTRA_FOLLOW_ROI_TARGET)) {
+//            Toast.makeText(getContext(), R.string.guided_scan_roi_set_message, Toast.LENGTH_LONG).show();
+//
+//            final double roiHeight = roiHeightWheel.getCurrentValue().toBase().getValue();
+//            final LatLongAlt roiCoord = new LatLongAlt(coord.getLatitude(), coord.getLongitude(), roiHeight);
+//
+//            pushROITargetToVehicle(drone, roiCoord);
+//            updateROITargetMarker(coord);
+//        } else {
+//            super.onGuidedClick(coord);
+//        }
+//    }
 
     private void pushROITargetToVehicle(Drone drone, LatLongAlt roiCoord) {
         if (roiCoord == null)
@@ -261,8 +261,8 @@ public class ModeFollowFragment extends ModeGuidedFragment implements OnItemSele
     }
 
     private void updateROITargetMarker(LatLong target) {
-        roiMarkerInfo.setPosition(target);
-        getBroadcastManager().sendBroadcast(new Intent(DroneMap.ACTION_UPDATE_MAP));
+//        roiMarkerInfo.setPosition(target);
+//        getBroadcastManager().sendBroadcast(new Intent(DroneMap.ACTION_UPDATE_MAP));
 
         if (target == null) {
             roiHeightWheel.setVisibility(View.GONE);
@@ -271,13 +271,13 @@ public class ModeFollowFragment extends ModeGuidedFragment implements OnItemSele
         }
     }
 
-    @Override
-    public MarkerInfo[] getMapMarkers() {
-        if (roiMarkerInfo.isVisible())
-            return markers;
-        else
-            return emptyMarkers;
-    }
+//    @Override
+//    public MarkerInfo[] getMapMarkers() {
+//        if (roiMarkerInfo.isVisible())
+//            return markers;
+//        else
+//            return emptyMarkers;
+//    }
 
     private static class FollowTypesAdapter extends ArrayAdapter<FollowType> {
 
