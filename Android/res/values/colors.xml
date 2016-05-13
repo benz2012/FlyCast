@@ -12,6 +12,8 @@
     <color name="navigation_entry_color">#212121</color>
 
     <color name="header_background">#068FD3</color>
+    <color name="green_back">#b0f2b6</color>
+    <color name="green_front">#43DB4D</color>
 
     <color name="orange">#FAAF4C</color>
     <color name="ground_speed_label">#0a5242</color>

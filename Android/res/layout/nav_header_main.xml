@@ -3,7 +3,7 @@
     android:id="@+id/navigation_account"
     android:layout_width="match_parent"
     android:layout_height="72dp"
-    android:background="@color/header_background"
+    android:background="@color/green_front"
     android:gravity="center"
     android:orientation="horizontal"
     android:padding="16dp"
