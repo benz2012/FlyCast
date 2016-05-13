@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import com.MAVLink.common.msg_global_position_int;
 
 import org.droidplanner.android.R;
-import org.droidplanner.android.activities.LocatorActivity;
+//import org.droidplanner.android.activities.LocatorActivity;
 import org.droidplanner.android.view.adapterViews.LocatorItemAdapter;
 
 public class LocatorListFragment extends Fragment {
@@ -45,8 +45,8 @@ public class LocatorListFragment extends Fragment {
                 .getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(recyclerLayoutMgr);
 
-        final LocatorActivity activity = (LocatorActivity) getActivity();
-        adapter = new LocatorItemAdapter(activity.getLastPositions(), listener);
+//        final LocatorActivity activity = (LocatorActivity) getActivity();
+//        adapter = new LocatorItemAdapter(activity.getLastPositions(), listener);
         recyclerView.setAdapter(adapter);
     }
 

@@ -282,7 +282,7 @@ public class DroidPlannerApp extends MultiDexApplication implements DroneListene
     }
 
     private ConnectionParameter retrieveConnectionParameters() {
-        final int connectionType = dpPrefs.getConnectionParameterType();
+        final int connectionType = 1; //dpPrefs.getConnectionParameterType();
         Bundle extraParams = new Bundle();
         final DroneSharePrefs droneSharePrefs = new DroneSharePrefs(dpPrefs.getDroneshareLogin(),
                 dpPrefs.getDronesharePassword(), dpPrefs.isDroneshareEnabled(),
