@@ -117,19 +117,19 @@ public class DownloadMapboxMapActivity : AppCompatActivity() {
 
         downloadProgressBar = findViewById(R.id.map_download_progress_bar) as ProgressBar?
 
-        val goToMyLocation = findViewById(R.id.my_location_button)
-        goToMyLocation?.setOnClickListener { downloadMapFragment?.goToMyLocation() }
-        goToMyLocation?.setOnLongClickListener {
-            downloadMapFragment?.setAutoPanMode(AutoPanMode.USER)
-            true
-        }
+//        val goToMyLocation = findViewById(R.id.my_location_button)
+//        goToMyLocation?.setOnClickListener { downloadMapFragment?.goToMyLocation() }
+//        goToMyLocation?.setOnLongClickListener {
+//            downloadMapFragment?.setAutoPanMode(AutoPanMode.USER)
+//            true
+//        }
 
-        val goToDroneLocation = findViewById(R.id.drone_location_button)
-        goToDroneLocation?.setOnClickListener { downloadMapFragment?.goToDroneLocation() }
-        goToDroneLocation?.setOnLongClickListener {
-            downloadMapFragment?.setAutoPanMode(AutoPanMode.DRONE)
-            true
-        }
+//        val goToDroneLocation = findViewById(R.id.drone_location_button)
+//        goToDroneLocation?.setOnClickListener { downloadMapFragment?.goToDroneLocation() }
+//        goToDroneLocation?.setOnLongClickListener {
+//            downloadMapFragment?.setAutoPanMode(AutoPanMode.DRONE)
+//            true
+//        }
 
     }
 

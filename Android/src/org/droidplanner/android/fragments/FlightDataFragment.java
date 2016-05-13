@@ -165,11 +165,11 @@ public class FlightDataFragment extends ApiListenerFragment implements SlidingDr
     private SlidingUpPanelLayout mSlidingPanel;
     private View mFlightActionsView;
 
-    private FloatingActionButton mGoToMyLocation;
-    private FloatingActionButton mGoToDroneLocation;
-    private FloatingActionButton actionDrawerToggle;
+//    private FloatingActionButton mGoToMyLocation;
+//    private FloatingActionButton mGoToDroneLocation;
+//    private FloatingActionButton actionDrawerToggle;
 
-    private DrawerNavigationUI navActivity;
+//    private DrawerNavigationUI navActivity;
 
     private static class SlidingPanelListenerManager implements SlidingUpPanelLayout.PanelSlideListener {
         private final HashMap<String, SlidingUpPanelLayout.PanelSlideListener> panelListenerClients = new HashMap<>();
@@ -222,22 +222,22 @@ public class FlightDataFragment extends ApiListenerFragment implements SlidingDr
 
     private final SlidingPanelListenerManager slidingPanelListenerMgr = new SlidingPanelListenerManager();
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        if (activity instanceof DrawerNavigationUI)
-            navActivity = (DrawerNavigationUI) activity;
+//    @Override
+//    public void onAttach(Activity activity) {
+//        super.onAttach(activity);
+//        if (activity instanceof DrawerNavigationUI)
+//            navActivity = (DrawerNavigationUI) activity;
+//
+//        if(activity instanceof SlidingUpPanelLayout.PanelSlideListener)
+//            slidingPanelListenerMgr.addPanelSlideListener(parentActivityPanelListenerLabel, (SlidingUpPanelLayout.PanelSlideListener) activity);
+//    }
 
-        if(activity instanceof SlidingUpPanelLayout.PanelSlideListener)
-            slidingPanelListenerMgr.addPanelSlideListener(parentActivityPanelListenerLabel, (SlidingUpPanelLayout.PanelSlideListener) activity);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        navActivity = null;
-        slidingPanelListenerMgr.removePanelSlideListener(parentActivityPanelListenerLabel);
-    }
+//    @Override
+//    public void onDetach() {
+//        super.onDetach();
+//        navActivity = null;
+//        slidingPanelListenerMgr.removePanelSlideListener(parentActivityPanelListenerLabel);
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -248,10 +248,10 @@ public class FlightDataFragment extends ApiListenerFragment implements SlidingDr
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final Bundle arguments = getArguments();
-        final boolean showActionDrawerToggle = arguments == null
-                ? DEFAULT_SHOW_ACTION_DRAWER_TOGGLE
-                : arguments.getBoolean(EXTRA_SHOW_ACTION_DRAWER_TOGGLE, DEFAULT_SHOW_ACTION_DRAWER_TOGGLE);
+//        final Bundle arguments = getArguments();
+//        final boolean showActionDrawerToggle = arguments == null
+//                ? DEFAULT_SHOW_ACTION_DRAWER_TOGGLE
+//                : arguments.getBoolean(EXTRA_SHOW_ACTION_DRAWER_TOGGLE, DEFAULT_SHOW_ACTION_DRAWER_TOGGLE);
 
         actionbarShadow = view.findViewById(R.id.actionbar_shadow);
 
@@ -263,68 +263,68 @@ public class FlightDataFragment extends ApiListenerFragment implements SlidingDr
 
         setupMapFragment();
 
-        mGoToMyLocation = (FloatingActionButton) view.findViewById(R.id.my_location_button);
-        mGoToDroneLocation = (FloatingActionButton) view.findViewById(R.id.drone_location_button);
-        actionDrawerToggle = (FloatingActionButton) view.findViewById(R.id.toggle_action_drawer);
+//        mGoToMyLocation = (FloatingActionButton) view.findViewById(R.id.my_location_button);
+//        mGoToDroneLocation = (FloatingActionButton) view.findViewById(R.id.drone_location_button);
+//        actionDrawerToggle = (FloatingActionButton) view.findViewById(R.id.toggle_action_drawer);
 
-        if (showActionDrawerToggle) {
-            actionDrawerToggle.setVisibility(View.VISIBLE);
+//        if (showActionDrawerToggle) {
+//            actionDrawerToggle.setVisibility(View.VISIBLE);
+//
+//            actionDrawerToggle.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    if (navActivity == null)
+//                        return;
+//
+//                    if (navActivity.isActionDrawerOpened())
+//                        navActivity.closeActionDrawer();
+//                    else
+//                        navActivity.openActionDrawer();
+//                }
+//            });
+//        }
 
-            actionDrawerToggle.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (navActivity == null)
-                        return;
+//        mGoToMyLocation.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mapFragment != null) {
+//                    mapFragment.goToMyLocation();
+//                    updateMapLocationButtons(AutoPanMode.DISABLED);
+//                }
+//            }
+//        });
+//        mGoToMyLocation.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                if (mapFragment != null) {
+//                    mapFragment.goToMyLocation();
+//                    updateMapLocationButtons(AutoPanMode.USER);
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
 
-                    if (navActivity.isActionDrawerOpened())
-                        navActivity.closeActionDrawer();
-                    else
-                        navActivity.openActionDrawer();
-                }
-            });
-        }
-
-        mGoToMyLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mapFragment != null) {
-                    mapFragment.goToMyLocation();
-                    updateMapLocationButtons(AutoPanMode.DISABLED);
-                }
-            }
-        });
-        mGoToMyLocation.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                if (mapFragment != null) {
-                    mapFragment.goToMyLocation();
-                    updateMapLocationButtons(AutoPanMode.USER);
-                    return true;
-                }
-                return false;
-            }
-        });
-
-        mGoToDroneLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mapFragment != null) {
-                    mapFragment.goToDroneLocation();
-                    updateMapLocationButtons(AutoPanMode.DISABLED);
-                }
-            }
-        });
-        mGoToDroneLocation.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                if (mapFragment != null) {
-                    mapFragment.goToDroneLocation();
-                    updateMapLocationButtons(AutoPanMode.DRONE);
-                    return true;
-                }
-                return false;
-            }
-        });
+//        mGoToDroneLocation.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (mapFragment != null) {
+//                    mapFragment.goToDroneLocation();
+//                    updateMapLocationButtons(AutoPanMode.DISABLED);
+//                }
+//            }
+//        });
+//        mGoToDroneLocation.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                if (mapFragment != null) {
+//                    mapFragment.goToDroneLocation();
+//                    updateMapLocationButtons(AutoPanMode.DRONE);
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
 
         flightActions = (FlightControlManagerFragment) fm.findFragmentById(R.id.flightActionsFragment);
         if (flightActions == null) {
@@ -382,14 +382,14 @@ public class FlightDataFragment extends ApiListenerFragment implements SlidingDr
 
     @Override
     public void onDrawerClosed() {
-        if (actionDrawerToggle != null)
-            actionDrawerToggle.setActivated(false);
+//        if (actionDrawerToggle != null)
+//            actionDrawerToggle.setActivated(false);
     }
 
     @Override
     public void onDrawerOpened() {
-        if (actionDrawerToggle != null)
-            actionDrawerToggle.setActivated(true);
+//        if (actionDrawerToggle != null)
+//            actionDrawerToggle.setActivated(true);
     }
 
     /**
@@ -409,8 +409,8 @@ public class FlightDataFragment extends ApiListenerFragment implements SlidingDr
     }
 
     private void updateMapLocationButtons(AutoPanMode mode) {
-        mGoToMyLocation.setActivated(false);
-        mGoToDroneLocation.setActivated(false);
+        //mGoToMyLocation.setActivated(false);
+        //mGoToDroneLocation.setActivated(false);
 
         if (mapFragment != null) {
             mapFragment.setAutoPanMode(mode);
@@ -418,11 +418,11 @@ public class FlightDataFragment extends ApiListenerFragment implements SlidingDr
 
         switch (mode) {
             case DRONE:
-                mGoToDroneLocation.setActivated(true);
+                //mGoToDroneLocation.setActivated(true);
                 break;
 
             case USER:
-                mGoToMyLocation.setActivated(true);
+                //mGoToMyLocation.setActivated(true);
                 break;
             default:
                 break;
