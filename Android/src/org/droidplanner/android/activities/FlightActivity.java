@@ -17,7 +17,7 @@ import org.droidplanner.android.view.SlidingDrawer;
 public class FlightActivity extends DrawerNavigationUI implements SlidingUpPanelLayout.PanelSlideListener {
 
     private static final String EXTRA_IS_ACTION_DRAWER_OPENED = "extra_is_action_drawer_opened";
-    private static final boolean DEFAULT_IS_ACTION_DRAWER_OPENED = true;
+    private static final boolean DEFAULT_IS_ACTION_DRAWER_OPENED = false;
 
     private FlightDataFragment flightData;
 
