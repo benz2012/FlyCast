@@ -6,7 +6,7 @@ FlyCast is built on top of Tower which is a Ground Control Station (GCS) Android
 running Ardupilot software.
 
 
-### Tower beta
+### Flycast beta
 
 ![FlyCast Flight Screen screenshot](http://i.imgur.com/Z8IsBYr.png)
 
